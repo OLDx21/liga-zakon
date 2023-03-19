@@ -1,6 +1,7 @@
 package com.mdemydovych.ligazakon.controller;
 
 import com.mdemydovych.ligazakon.service.HandleDateService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,8 @@ public class HandleDateController {
   private final HandleDateService handleDateService;
 
   @GetMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+  @Operation(description = "End point which takes an html file as input,"
+      + " and returns the same file, with selected dates")
   public String handleDates(MultipartFile file) {
     return handleDateService.markDates(file);
   }
